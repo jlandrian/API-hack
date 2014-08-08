@@ -7,18 +7,20 @@ var artistSearch = function(artistName) {
 			},
 		success: function (data) {
 			return data.artists.items[0].id;
+			//countrySearch('12345', 'asdf');
+			console.log(result);
 		}
 	});
-	console.log(result);
+	console.log("the following is actually a jQuery promise() object");
+	
 };
 
-var countrySearch = function(artistID, countryName) {
-	
+var countrySearch = function() {
 	$.ajax({
 		url: "https://api.spotify.com/v1/artists/" + artistID + "/top-tracks?country=" + countryName,
 		data: {
-			q: artistName,
-			type: "artist"
+			id: artistName,
+			country: "US"
 			},
 		success: function (data) {
 			$(".results").text(data.artists.items[0].images[0].url);
