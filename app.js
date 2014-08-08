@@ -6,9 +6,8 @@ var artistSearch = function(artistName) {
 			type: "artist"
 			},
 		success: function (data) {
-			return data.artists.items[0].id;
-			//countrySearch('12345', 'asdf');
-			console.log(result);
+			console.log(data);
+			console.log(data.artists.items[0].id);
 		}
 	});
 	console.log("the following is actually a jQuery promise() object");
