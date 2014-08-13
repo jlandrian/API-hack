@@ -1,31 +1,38 @@
 var artistSearch = function(artistName) {
-	var result = $.ajax({
+	$.ajax({
 		url: "https://api.spotify.com/v1/search/",
 		data: {
 			q: artistName,
 			type: "artist"
 			},
 		success: function (data) {
-			console.log(data);
-			console.log(data.artists.items[0].id);
+			var artistID = data.artists.items[0].id;
+			var selectedCountry = $(".country").val();
+			//console.log(selectedCountry);
+			//console.log(artistID);
+			countrySearch(artistID, selectedCountry);
+			//console.log(countrySearch.tracks);
 		}
 	});
-	console.log("the following is actually a jQuery promise() object");
 	
 };
 
-var countrySearch = function() {
+var countrySearch = function(artistID, countryName) {
 	$.ajax({
 		url: "https://api.spotify.com/v1/artists/" + artistID + "/top-tracks?country=" + countryName,
 		data: {
-			id: artistName,
-			country: "US"
+			id: artistID,
+			country: countryName
 			},
-		success: function (data) {
-			$(".results").text(data.artists.items[0].images[0].url);
+		success: function(data) {
+			console.log(data.tracks[0].name, data.tracks[1].name, data.tracks[2].name);
+			console.log(countryName);
 		}
+
 	});
 };
+
+
 
 $(document).ready( function() {
 	$('.name').submit( function(event){
