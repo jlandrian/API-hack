@@ -12,6 +12,7 @@ body {
 
 .results {
 	position: relative;
+	display: none;
 	margin-top: 10px;
 	height: 80px;
 	width: 350px;
