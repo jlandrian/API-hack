@@ -8,13 +8,20 @@ var artistSearch = function(artistName) {
 		success: function (data) {
 			var artistID = data.artists.items[0].id;
 			var selectedCountry = $(".country").val();
-			//console.log(selectedCountry);
-			//console.log(artistID);
 			countrySearch(artistID, selectedCountry);
 			//console.log(countrySearch.tracks);
+
+		},
+		error: function (error) {
+			$(".results").text("Sorry, but we coudn't find that artist!");
 		}
 	});
 	
+};
+
+var result = function(image) {
+	var albumCover= $(".results").find("img");
+	albumCover.attr("src", image.tracks[0].album.images[0].url);
 };
 
 var countrySearch = function(artistID, countryName) {
@@ -25,8 +32,14 @@ var countrySearch = function(artistID, countryName) {
 			country: countryName
 			},
 		success: function(data) {
-			console.log(data.tracks[0].name, data.tracks[1].name, data.tracks[2].name);
-			console.log(countryName);
+			var albumCover = data.tracks[0].album.images[2].url;
+			$(".results").html("<img src='" + albumCover + "'img>");
+			$.each(data.tracks, function(i, item) {
+
+			});
+		},
+		error: function (error) {
+			$(".results").text("Sorry, that artist is not available in that country!");
 		}
 
 	});
