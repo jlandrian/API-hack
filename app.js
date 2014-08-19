@@ -9,8 +9,6 @@ var artistSearch = function(artistName) {
 			var artistID = data.artists.items[0].id;
 			var selectedCountry = $(".country").val();
 			countrySearch(artistID, selectedCountry);
-			//console.log(countrySearch.tracks);
-
 		},
 		error: function (error) {
 			$(".results").text("Sorry, but we coudn't find that artist!");
@@ -19,9 +17,22 @@ var artistSearch = function(artistName) {
 	
 };
 
-var result = function(image) {
-	var albumCover= $(".results").find("img");
-	albumCover.attr("src", image.tracks[0].album.images[0].url);
+var result = function(item) {
+
+	var tracks = $(".results").clone();
+
+	var albumCover = tracks.find("img");
+	albumCover.attr("src", item.album.images[2].url);
+
+	var songName = tracks.find(".track");
+	songName.text(item.name);
+
+	var preview = tracks.find(".preview");
+	preview.attr("a", item.preview_url);
+
+	var songLink = tracks.find(".link");
+	songLink.attr("a", item.external_urls.spotify);
+
 };
 
 var countrySearch = function(artistID, countryName) {
@@ -32,12 +43,12 @@ var countrySearch = function(artistID, countryName) {
 			country: countryName
 			},
 		success: function(data) {
-			var albumCover = data.tracks[0].album.images[2].url;
-			$(".results").html("<img src='" + albumCover + "'img>");
 			$.each(data.tracks, function(i, item) {
-
-			});
-		},
+				var info = result(item);
+				$(".results").append(info);
+				console.log(item);
+				});
+			},
 		error: function (error) {
 			$(".results").text("Sorry, that artist is not available in that country!");
 		}
