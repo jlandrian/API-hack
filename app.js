@@ -21,7 +21,7 @@ var result = function(item) {
 
 	var tracks = $(".results").clone();
 
-	var albumCover = tracks.find("img");
+	var albumCover = tracks.find(".art");
 	albumCover.attr("src", item.album.images[2].url);
 
 	var songName = tracks.find(".track");
@@ -33,6 +33,7 @@ var result = function(item) {
 	var songLink = tracks.find(".link");
 	songLink.attr("a", item.external_urls.spotify);
 
+	return tracks;
 };
 
 var countrySearch = function(artistID, countryName) {
@@ -46,7 +47,7 @@ var countrySearch = function(artistID, countryName) {
 			$.each(data.tracks, function(i, item) {
 				var info = result(item);
 				$(".results").append(info);
-				console.log(item);
+				//console.log(item);
 				});
 			},
 		error: function (error) {
