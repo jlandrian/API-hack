@@ -33,7 +33,7 @@ var result = function(item) {
 	var songLink = tracks.find(".link");
 	songLink.attr("a", item.external_urls.spotify);
 
-	//return tracks;
+	return tracks;
 };
 
 var countrySearch = function(artistID, countryName) {
