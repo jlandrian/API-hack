@@ -46,8 +46,8 @@ var countrySearch = function(artistID, countryName) {
 		success: function(data) {
 			$.each(data.tracks, function(i, item) {
 				var info = result(item);
-				$(".results").append(info);
-				console.log(item);
+				$(".container").append(info);
+				console.log($(".results").length);
 				});
 			},
 		error: function (error) {
@@ -62,7 +62,7 @@ var countrySearch = function(artistID, countryName) {
 $(document).ready( function() {
 	$('.name').submit( function(event){
 		// zero out results if previous search has run
-		$('.results').html('');
+		//$('.results').empty();
 		// get the value of the name the user submitted
 		var name = $(this).find("input[name='artist']").val();
 		artistSearch(name);
