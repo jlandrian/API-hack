@@ -28,11 +28,11 @@ var result = function(item) {
 	var songName = tracks.find(".track");
 	songName.text(item.name);
 
-	var preview = tracks.find(".preview");
-	preview.attr("a", item.preview_url);
+	var preview = tracks.find(".preview a");
+	preview.attr("href", item.preview_url);
 
-	var songLink = tracks.find(".link");
-	songLink.attr("a", item.external_urls.spotify);
+	var songLink = tracks.find(".link a");
+	songLink.attr("href", item.external_urls.spotify);
 
 	return tracks;
 };
