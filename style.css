@@ -14,9 +14,10 @@ body {
 	display: none;
 }
 
-.results {
+.border {
 	position: relative;
 	margin-top: 10px;
+	margin-bottom: 5px;
 	height: 80px;
 	width: 350px;
 	border: #000000 solid 5px;
@@ -24,30 +25,33 @@ body {
 }
 
 .track {
-	position: relative;
+	position: absolute;
 	font-size: 1em;
-	display: block;
-	width: 100px;
-	margin: 5px auto;
-	outline: #000000 solid 1px;
+	text-align: center;
+	/*display: block;*/
+	width: 260px;
+	margin: 5px 0 5px 82px;
+	/*outline: #000000 solid 1px;*/
 }
 
 .art {
-	position: relative;
-	margin: -18px 8px 8px 8px;
-	outline:  #000000 solid 1px;
+	position: absolute;
+	margin: 8px 8px 8px 8px;
+	/*outline:  #000000 solid 1px;*/
 	height: 64px;
 	width: 64px;
 }
 
 .preview {
-	margin: -25px 0 8px 100px;
+	position: absolute;
+	margin: 55px 0 0px 100px;
 }
 
 .link {
-	position: relative;
-	float: right;
-	margin: -40px 8px 0 0;
+	position: absolute;
+	right: 8px;
+	bottom: 5px;
+	margin: 0 0;
 }
 
 .link img {

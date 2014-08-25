@@ -19,9 +19,10 @@ var artistSearch = function(artistName) {
 
 var result = function(item) {
 
-	var tracks = $(".results").clone();
+	var tracks = $(".track-template").clone();
+	tracks.removeAttr("class");
 
-	var albumCover = tracks.find(".art");
+	var albumCover = tracks.find(".art img");
 	albumCover.attr("src", item.album.images[2].url);
 
 	var songName = tracks.find(".track");
@@ -46,8 +47,8 @@ var countrySearch = function(artistID, countryName) {
 		success: function(data) {
 			$.each(data.tracks, function(i, item) {
 				var info = result(item);
-				$(".container").append(info);
-				console.log($(".results").length);
+				$(".results").append(info);
+				console.log(item.album.images[2].url);
 				});
 			},
 		error: function (error) {
@@ -62,9 +63,10 @@ var countrySearch = function(artistID, countryName) {
 $(document).ready( function() {
 	$('.name').submit( function(event){
 		// zero out results if previous search has run
-		//$('.results').empty();
+		$('.results').empty();
 		// get the value of the name the user submitted
 		var name = $(this).find("input[name='artist']").val();
 		artistSearch(name);
+		$(".name").val('');
 	});
 });
