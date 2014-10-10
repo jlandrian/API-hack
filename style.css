@@ -7,6 +7,8 @@ body {
 .container {
 	width: 400px;
 	margin: auto;
+	margin-top: 20px;
+	/*text-align: center;*/
 
 }
 
@@ -24,10 +26,22 @@ body {
 	border-radius: 10px;
 }
 
+.intro {
+	width: 400px;
+	margin: auto;
+	/*outline: black solid 1px;*/
+}
+
+.intro img {
+	border-radius: 10px;
+	margin-left: 60px;
+	margin-top: 10px;
+}
+
 .track {
 	position: absolute;
 	font-size: 1em;
-	text-align: center;
+	/*text-align: center;*/
 	/*display: block;*/
 	width: 260px;
 	margin: 5px 0 5px 82px;
@@ -44,7 +58,7 @@ body {
 
 .preview {
 	position: absolute;
-	margin: 55px 0 0px 100px;
+	margin: 55px 0 0 100px;
 }
 
 .link {

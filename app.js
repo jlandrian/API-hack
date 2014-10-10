@@ -1,3 +1,4 @@
+
 var artistSearch = function(artistName) {
 	$.ajax({
 		url: "https://api.spotify.com/v1/search/",
@@ -10,6 +11,7 @@ var artistSearch = function(artistName) {
 			var selectedCountry = $(".country").val();
 			countrySearch(artistID, selectedCountry);
 		},
+		
 		error: function (error) {
 			$(".results").text("Sorry, but we coudn't find that artist!");
 		}
@@ -67,6 +69,5 @@ $(document).ready( function() {
 		// get the value of the name the user submitted
 		var name = $(this).find("input[name='artist']").val();
 		artistSearch(name);
-		$(".name").val('');
 	});
 });
